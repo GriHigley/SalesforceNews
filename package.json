@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
-    "deploy": "npm run build && sfdx force:source:push"
+    "deploy": "npm run build && sf project deploy start"
   },
   "repository": {
     "type": "git",
