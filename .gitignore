@@ -65,3 +65,4 @@ build
 
 # Local DX Settings
 .sfdx
+.sf
