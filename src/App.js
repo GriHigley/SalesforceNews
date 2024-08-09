@@ -14,8 +14,21 @@ class App extends Component {
     
     componentDidMount(){
         LCC.addMessageHandler(this.messageRecievedHandler);
+        LCC.callApex("SalesforceNews.GetNewsFeed",
+            this.handleGetNewsFeed,
+            {escape: true});
     }
-    
+    handleGetNewsFeed(result, event) {
+        if (event.status) {
+        //   this.setState({account: result});
+            console.log(result.replace(/(<([^>]+)>)/gi, ""))
+            // console.log(JSON.parse(result));
+
+        }
+        else if (event.type === "exception") {
+          console.log(event.message + " : " + event.where);
+        }
+      }
     messageRecievedHandler(msg){
         const { name, value } = msg;
         
@@ -54,7 +67,6 @@ class App extends Component {
         return (
             <div>
                 <p>A React Component!</p>
-                <button onClick={this.sendMessageExample.bind(this)}>A Button that sends a specific exampleMessage</button>
             </div>
         );
     }

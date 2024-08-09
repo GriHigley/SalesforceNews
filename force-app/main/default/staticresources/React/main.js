@@ -7702,6 +7702,18 @@ var App = function (_Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             _lightningContainer2.default.addMessageHandler(this.messageRecievedHandler);
+            _lightningContainer2.default.callApex("SalesforceNews.GetNewsFeed", this.handleGetNewsFeed, { escape: true });
+        }
+    }, {
+        key: 'handleGetNewsFeed',
+        value: function handleGetNewsFeed(result, event) {
+            if (event.status) {
+                //   this.setState({account: result});
+                console.log(result.replace(/(<([^>]+)>)/gi, ""));
+                // console.log(JSON.parse(result));
+            } else if (event.type === "exception") {
+                console.log(event.message + " : " + event.where);
+            }
         }
     }, {
         key: 'messageRecievedHandler',
@@ -7750,11 +7762,6 @@ var App = function (_Component) {
                     'p',
                     null,
                     'A React Component!'
-                ),
-                _react2.default.createElement(
-                    'button',
-                    { onClick: this.sendMessageExample.bind(this) },
-                    'A Button that sends a specific exampleMessage'
                 )
             );
         }

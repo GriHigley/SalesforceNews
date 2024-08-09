@@ -3,13 +3,13 @@
 	
     <lightning:card title="Your React Component">
 
-        <lightning:container aura:id="jsApp" src="{!$Resource.ReactComponent + '/index.html'}"
+        <lightning:container aura:id="jsApp" src="{!$Resource.React + '/index.html'}"
             onmessage="{!c.handleMessage}"
             onerror="{!c.handleError}"/>
 
     </lightning:card>
-    <lightning:card title="Message Output">
+    <!-- <lightning:card title="Message Output">
         {!v.message}
     </lightning:card>
-    
+     -->
 </aura:component>
